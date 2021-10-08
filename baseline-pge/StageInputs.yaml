@@ -13,12 +13,12 @@ spec:
           - -c
           - >-
             cd /calrissian/input-data &&
-            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/main/baseline-pge/baseline-pge-workflow-job.yml &&
-            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/main/baseline-pge/baseline-pge-workflow.cwl &&
-            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/main/baseline-pge/run-pge-job.yml &&
-            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/main/baseline-pge/run-pge.cwl &&
-            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/main/baseline-pge/stage-in-job.yml &&
-            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/main/baseline-pge/stage-in.cwl
+            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/baseline-pge-workflow-job.yml &&
+            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/baseline-pge-workflow.cwl &&
+            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/run-pge-job.yml &&
+            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/run-pge.cwl &&
+            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/stage-in-job.yml &&
+            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/stage-in.cwl
         volumeMounts:
         - mountPath: /calrissian/input-data
           name: calrissian-input-data

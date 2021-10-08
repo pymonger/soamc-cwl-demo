@@ -18,9 +18,3 @@ outputs:
     type: File
     outputBinding:
       glob: $(inputs.input_file)
-  stdout_file:
-    type: stdout
-  stderr_file:
-    type: stderr
-stdout: stdout_stage-in.txt
-stderr: stderr_stage-in.txt
