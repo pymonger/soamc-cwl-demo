@@ -22,5 +22,5 @@ outputs:
     type: stdout
   stderr_file:
     type: stderr
-stdout: stdout.txt
-stderr: stderr.txt
+stdout: stdout_stage-in.txt
+stderr: stderr_stage-in.txt

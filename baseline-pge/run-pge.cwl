@@ -5,7 +5,7 @@ class: CommandLineTool
 hints:
   DockerRequirement:
     dockerPull: pymonger/baseline-pge:develop
-baseCommand: [/home/ops/verdi/ops/baseline_pge/dumby_landsat.sh]
+baseCommand: [/home/ops/verdi/ops/baseline_pge/dumby_landsat_cwl.sh]
 requirements:
   InitialWorkDirRequirement:
     listing:
@@ -23,6 +23,10 @@ inputs:
     type: int
     inputBinding:
       position: 3
+  input_file:
+    type: File
+    inputBinding:
+      position: 4
 outputs:
   dataset_dir:
     type: Directory
@@ -32,5 +36,5 @@ outputs:
     type: stdout
   stderr_file:
     type: stderr
-stdout: stdout.txt
-stderr: stderr.txt
+stdout: stdout_run-pge.txt
+stderr: stderr_run-pge.txt
