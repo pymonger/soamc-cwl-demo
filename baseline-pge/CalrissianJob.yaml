@@ -1,0 +1,54 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: calrissian-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: calrissian-job
+        image: dukegcb/calrissian:latest
+        command: ["calrissian"]
+        args:
+          - "--stdout"
+          - "/calrissian/output-data/docker-output.json"
+          - "--stderr"
+          - "/calrissian/output-data/docker-stderr.log"
+          - "--max-ram"
+          - "16G"
+          - "--max-cores"
+          - "8"
+          - "--tmp-outdir-prefix"
+          - "/calrissian/tmpout/"
+          - "--outdir"
+          - "/calrissian/output-data/"
+          - "--usage-report"
+          - "/calrissian/output-data/docker-usage.json"
+          - "/calrissian/input-data/baseline-pge-workflow.cwl"
+          - "/calrissian/input-data/baseline-pge-workflow-job.yml"
+        volumeMounts:
+        - mountPath: /calrissian/input-data
+          name: calrissian-input-data
+          readOnly: true
+        - mountPath: /calrissian/tmpout
+          name: calrissian-tmpout
+        - mountPath: /calrissian/output-data
+          name: calrissian-output-data
+        env:
+        - name: CALRISSIAN_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+      restartPolicy: Never
+      volumes:
+      - name: calrissian-input-data
+        persistentVolumeClaim:
+          claimName: calrissian-input-data
+          readOnly: true
+      - name: calrissian-tmpout
+        persistentVolumeClaim:
+          claimName: calrissian-tmpout
+      - name: calrissian-output-data
+        persistentVolumeClaim:
+          claimName: calrissian-output-data

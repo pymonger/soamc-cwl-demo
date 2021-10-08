@@ -352,3 +352,37 @@
    -rw-r--r--  1 gmanipon  wheel  2477207 Oct  7 17:38 dumby-product-20210622191038567000.browse.png
    -rw-r--r--  1 gmanipon  wheel    80019 Oct  7 17:38 dumby-product-20210622191038567000.browse_small.png
    ```
+
+## Run 2-step workflow (stage-in & run-pge) example on K8s (Kubernetes) via Calrissian
+
+1. Change to `baseline-pge` directory:
+   ```
+   cd baseline-pge
+   ```
+1. Create namespace and roles:
+   ```
+   NAMESPACE_NAME=soamc-cwl-demo
+   kubectl create namespace "$NAMESPACE_NAME"
+   kubectl --namespace="$NAMESPACE_NAME" create role pod-manager-role \
+     --verb=create,patch,delete,list,watch --resource=pods
+   kubectl --namespace="$NAMESPACE_NAME" create role log-reader-role \
+     --verb=get,list --resource=pods/log
+   kubectl --namespace="$NAMESPACE_NAME" create rolebinding pod-manager-default-binding \
+     --role=pod-manager-role --serviceaccount=${NAMESPACE_NAME}:default
+   kubectl --namespace="$NAMESPACE_NAME" create rolebinding log-reader-default-binding \
+     --role=log-reader-role --serviceaccount=${NAMESPACE_NAME}:default
+   ```
+1. Create volumes:
+   ```
+   kubectl --namespace="$NAMESPACE_NAME" create -f VolumeClaims.yaml
+   ```
+1. Stage inputs to volume:
+   ```
+   kubectl --namespace="$NAMESPACE_NAME" create -f StageInputs.yaml
+   kubectl --namespace="$NAMESPACE_NAME" logs -f job/stage-inputs
+   ```
+1. Run the workflow:
+   ```
+   kubectl --namespace="$NAMESPACE_NAME" create -f CalrissianJob.yaml
+   kubectl --namespace="$NAMESPACE_NAME" logs -f job/calrissian-job
+   ```
