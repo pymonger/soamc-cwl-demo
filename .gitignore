@@ -1,5 +1,5 @@
-stdout.txt
-stderr.txt
+stdout*.txt
+stderr*.txt
 *.swp
 *.TIF
 dumby-product-*

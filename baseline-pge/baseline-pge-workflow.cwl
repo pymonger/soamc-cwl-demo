@@ -13,6 +13,18 @@ outputs:
   final_dataset_dir:
     type: Directory
     outputSource: run-pge/dataset_dir
+  stdout_stage-in:
+    type: File
+    outputSource: stage-in/stdout_file
+  stderr_stage-in:
+    type: File
+    outputSource: stage-in/stderr_file
+  stdout_run-pge:
+    type: File
+    outputSource: run-pge/stdout_file
+  stderr_run-pge:
+    type: File
+    outputSource: run-pge/stderr_file
 
 steps:
   stage-in:
@@ -20,7 +32,10 @@ steps:
     in:
       input_url: workflow_input_url
       input_file: workflow_input_file
-    out: [localized_file]
+    out:
+    - localized_file
+    - stdout_file
+    - stderr_file
 
   run-pge:
     run: run-pge.cwl
@@ -29,4 +44,7 @@ steps:
       product_id: workflow_product_id
       min_sleep: workflow_min_sleep
       max_sleep: workflow_max_sleep
-    out: [dataset_dir]
+    out:
+    - dataset_dir
+    - stdout_file
+    - stderr_file
