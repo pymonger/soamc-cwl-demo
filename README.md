@@ -23,7 +23,7 @@
    ```
    cd baseline-pge
    ```
-1. Run cwl-runner:
+1. Run cwl-runner (to run singularity instead of docker, add `--singularity` option):
    ```
    cwl-runner stage-in.cwl stage-in-job.yml 
    ```
@@ -88,7 +88,7 @@
    cd baseline-pge
    ```
 1. Ensure that the `LC80101172015002LGN00_BQA.TIF` file exists there. If not, run the `stage-in` example above.
-1. Run cwl-runner:
+1. Run cwl-runner (to run singularity instead of docker, add `--singularity` option):
    ```
    cwl-runner --no-match-user --no-read-only run-pge.cwl run-pge-job.yml 
    ```
@@ -186,6 +186,16 @@
    }
    INFO Final process status is success
    ```
+1. View dataset directory:
+   ```
+   ls -ltr dumby-product-20210622191038567000/
+   total 12040
+   -rw-r--r--  1 gmanipon  wheel  2861879 Oct  7 17:38 LC80101172015002LGN00_BQA.TIF
+   -rw-r--r--  1 gmanipon  wheel        2 Oct  7 17:38 dumby-product-20210622191038567000.dataset.json
+   -rw-r--r--  1 gmanipon  wheel      186 Oct  7 17:38 dumby-product-20210622191038567000.met.json
+   -rw-r--r--  1 gmanipon  wheel  2477207 Oct  7 17:38 dumby-product-20210622191038567000.browse.png
+   -rw-r--r--  1 gmanipon  wheel    80019 Oct  7 17:38 dumby-product-20210622191038567000.browse_small.png
+   ```
 
 ## Run 2-step workflow (stage-in & run-pge) example
 
@@ -193,7 +203,7 @@
    ```
    cd baseline-pge
    ```
-1. Run cwl-runner:
+1. Run cwl-runner (to run singularity instead of docker, add `--singularity` option):
    ```
    cwl-runner --no-match-user --no-read-only baseline-pge-workflow.cwl baseline-pge-workflow-job.yml
    ```
@@ -331,4 +341,14 @@
        }
    }
    INFO Final process status is success
+   ```
+1. View dataset directory:
+   ```
+   ls -ltr dumby-product-20210622191038567000/
+   total 12040
+   -rw-r--r--  1 gmanipon  wheel  2861879 Oct  7 17:38 LC80101172015002LGN00_BQA.TIF
+   -rw-r--r--  1 gmanipon  wheel        2 Oct  7 17:38 dumby-product-20210622191038567000.dataset.json
+   -rw-r--r--  1 gmanipon  wheel      186 Oct  7 17:38 dumby-product-20210622191038567000.met.json
+   -rw-r--r--  1 gmanipon  wheel  2477207 Oct  7 17:38 dumby-product-20210622191038567000.browse.png
+   -rw-r--r--  1 gmanipon  wheel    80019 Oct  7 17:38 dumby-product-20210622191038567000.browse_small.png
    ```
