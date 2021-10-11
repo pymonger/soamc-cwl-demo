@@ -390,11 +390,12 @@
    ```
    Monitor execution with:
    ```
-   kubectl --namespace="$NAMESPACE_NAME" logs -f job/calrissian-job
+   watch kubectl --namespace="$NAMESPACE_NAME" logs -f job/calrissian-job
    ```
    Additionally, note the jobs and pods that were created by Calrissian as a result
    of the workflow submission:
    ```
+   watch kubectl --namespace="$NAMESPACE_NAME" get jobs
    watch kubectl --namespace="$NAMESPACE_NAME" get pods
    ```
 1. Once the workflow execution is done, you can copy over the STDOUT/STDERR logs and
@@ -405,5 +406,5 @@
    In another terminal window:
    ```
    NAMESPACE_NAME=soamc-cwl-demo
-   kubectl --namespace="$NAMESPACE_NAME" cp access-persistent-volumes:/calrissian/output-data output-data
+   kubectl --namespace="$NAMESPACE_NAME" cp access-pv:/calrissian/output-data output-data
    ```
