@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: calrissian-job
-        image: dukegcb/calrissian:latest
+        image: pymonger/calrissian:latest
         command: ["calrissian"]
         args:
           - "--stdout"
@@ -25,10 +25,8 @@ spec:
           - "/calrissian/output-data/"
           - "--usage-report"
           - "/calrissian/output-data/docker-usage.json"
-          #- "/calrissian/input-data/baseline-pge-workflow.cwl"
-          #- "/calrissian/input-data/baseline-pge-workflow-job.yml"
-          - "/calrissian/input-data/stage-in.cwl"
-          - "/calrissian/input-data/stage-in-job.yml"
+          - "/calrissian/input-data/baseline-pge-workflow.cwl"
+          - "/calrissian/input-data/baseline-pge-workflow-job.yml"
         volumeMounts:
         - mountPath: /calrissian/input-data
           name: calrissian-input-data
