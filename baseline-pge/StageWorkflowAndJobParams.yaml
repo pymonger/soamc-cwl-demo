@@ -1,12 +1,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: stage-inputs
+  name: stage-workflow-and-params
 spec:
   template:
     spec:
       containers:
-      - name: stage-inputs
+      - name: stage-workflow-and-params
         image: curlimages/curl
         command: ["/bin/sh"]
         args:

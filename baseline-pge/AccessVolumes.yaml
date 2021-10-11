@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: access-pv
+spec:
+  containers:
+  - name: alpine
+    image: alpine:latest
+    command: ["sleep", "infinity"]
+    volumeMounts:
+      - mountPath: /calrissian/input-data
+        name: calrissian-input-data
+        readOnly: true
+      - mountPath: /calrissian/tmpout
+        name: calrissian-tmpout
+      - mountPath: /calrissian/output-data
+        name: calrissian-output-data
+  volumes:
+  - name: calrissian-input-data
+    persistentVolumeClaim:
+      claimName: calrissian-input-data
+      readOnly: true
+  - name: calrissian-tmpout
+    persistentVolumeClaim:
+      claimName: calrissian-tmpout
+  - name: calrissian-output-data
+    persistentVolumeClaim:
+      claimName: calrissian-output-data

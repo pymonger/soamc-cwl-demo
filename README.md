@@ -376,13 +376,34 @@
    ```
    kubectl --namespace="$NAMESPACE_NAME" create -f VolumeClaims.yaml
    ```
-1. Stage inputs to volume:
+1. Stage CWL workflow and job parameters YAML to volume:
    ```
-   kubectl --namespace="$NAMESPACE_NAME" create -f StageInputs.yaml
-   kubectl --namespace="$NAMESPACE_NAME" logs -f job/stage-inputs
+   kubectl --namespace="$NAMESPACE_NAME" create -f StageWorkflowAndJobParams.yaml
+   ```
+   Monitor execution with:
+   ```
+   watch kubectl --namespace="$NAMESPACE_NAME" logs -f job/stage-workflow-and-params
    ```
 1. Run the workflow:
    ```
    kubectl --namespace="$NAMESPACE_NAME" create -f CalrissianJob.yaml
+   ```
+   Monitor execution with:
+   ```
    kubectl --namespace="$NAMESPACE_NAME" logs -f job/calrissian-job
+   ```
+   Additionally, note the jobs and pods that were created by Calrissian as a result
+   of the workflow submission:
+   ```
+   watch kubectl --namespace="$NAMESPACE_NAME" get pods
+   ```
+1. Once the workflow execution is done, you can copy over the STDOUT/STDERR logs and
+   output files. In one terminal window run:
+   ```
+   kubectl --namespace="$NAMESPACE_NAME" create -f AccessVolumes.yaml
+   ```
+   In another terminal window:
+   ```
+   NAMESPACE_NAME=soamc-cwl-demo
+   kubectl --namespace="$NAMESPACE_NAME" cp access-persistent-volumes:/calrissian/output-data output-data
    ```
