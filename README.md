@@ -372,7 +372,7 @@
    kubectl --namespace="$NAMESPACE_NAME" create rolebinding log-reader-default-binding \
      --role=log-reader-role --serviceaccount=${NAMESPACE_NAME}:default
    ```
-1. Create volumes:
+1. Create volumes (this is the equivalent to creating a unique work directory for the workflow execution job):
    ```
    kubectl --namespace="$NAMESPACE_NAME" create -f VolumeClaims.yaml
    ```
