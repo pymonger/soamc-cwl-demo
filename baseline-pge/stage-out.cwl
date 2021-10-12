@@ -4,13 +4,14 @@ cwlVersion: v1.0
 class: CommandLineTool
 hints:
   DockerRequirement:
-    dockerPull: amazon/aws-cli
+    dockerPull: pymonger/aws-cli
 requirements:
   InitialWorkDirRequirement:
     listing:
       - entry: $(inputs.aws_creds)
-baseCommand: [s3]
+baseCommand: [aws]
 arguments: [
+  "s3",
   "cp",
   "--recursive",
 ]
