@@ -1,0 +1,7 @@
+aws_creds:
+  class: Directory
+  path: /Users/gmanipon/.aws
+dataset_dir:
+  class: Directory
+  path: dumby-product-20210622191038567000
+base_dataset_url: s3://nisar-dev/test

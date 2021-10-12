@@ -8,6 +8,8 @@ inputs:
   workflow_product_id: string
   workflow_min_sleep: int
   workflow_max_sleep: int
+  workflow_aws_creds: Directory
+  workflow_base_dataset_url: string
 
 outputs:
   final_dataset_dir:
@@ -25,6 +27,12 @@ outputs:
   stderr_run-pge:
     type: File
     outputSource: run-pge/stderr_file
+  stdout_stage-out:
+    type: File
+    outputSource: stage-out/stdout_file
+  stderr_stage-out:
+    type: File
+    outputSource: stage-out/stderr_file
 
 steps:
   stage-in:
@@ -46,5 +54,15 @@ steps:
       max_sleep: workflow_max_sleep
     out:
     - dataset_dir
+    - stdout_file
+    - stderr_file
+
+  stage-out:
+    run: stage-out.cwl
+    in:
+      aws_creds: workflow_aws_creds
+      dataset_dir: run-pge/dataset_dir
+      base_dataset_url: workflow_base_dataset_url
+    out:
     - stdout_file
     - stderr_file
