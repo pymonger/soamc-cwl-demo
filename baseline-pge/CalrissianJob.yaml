@@ -28,6 +28,9 @@ spec:
           - "/calrissian/input-data/baseline-pge-workflow.cwl"
           - "/calrissian/input-data/baseline-pge-workflow-job_k8s.yml"
         volumeMounts:
+        - mountPath: /home/calrissian/.aws
+          name: calrissian-aws-creds
+          readOnly: true
         - mountPath: /calrissian/input-data
           name: calrissian-input-data
           readOnly: true
@@ -42,6 +45,8 @@ spec:
               fieldPath: metadata.name
       restartPolicy: Never
       volumes:
+      - name: calrissian-aws-creds
+        secret: aws-creds
       - name: calrissian-input-data
         persistentVolumeClaim:
           claimName: calrissian-input-data
