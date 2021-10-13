@@ -512,7 +512,7 @@ Building off of the previous run-pge example:
    ```
 1. Create secret containing AWS creds:
    ```
-   kubectl --namespace="$NAMESPACE_NAME" secret generic aws-creds --from-file=$HOME/.aws/credentials
+   kubectl --namespace="$NAMESPACE_NAME" create secret generic aws-creds --from-file=$HOME/.aws/credentials
    ```
 1. Create volumes (this is the equivalent to creating a unique work directory for the workflow execution job):
    ```
