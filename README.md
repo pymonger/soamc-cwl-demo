@@ -552,19 +552,25 @@ Building off of the previous run-pge example:
    ```
 1. Create secret containing AWS creds:
    ```
-   kubectl --namespace="$NAMESPACE_NAME" create secret generic aws-creds --from-file=$HOME/.aws/credentials
+   export aws_access_key_id="<your AWS access key ID>"
+   export aws_secret_access_key="<your AWS secret access key>"
+   export aws_session_token="<your AWS session token>"
+   kubectl --namespace="$NAMESPACE_NAME" create secret generic aws-creds \
+     --from-literal=aws_access_key_id="$aws_access_key_id" \
+     --from-literal=aws_secret_access_key="$aws_secret_access_key" \
+     --from-literal=aws_session_token="$aws_session_token"
    ```
 1. Create volumes (this is the equivalent to creating a unique work directory for the workflow execution job):
    ```
    kubectl --namespace="$NAMESPACE_NAME" create -f VolumeClaims.yaml
    ```
-1. Stage CWL workflow and job parameters YAML to volume:
+1. Stage CWL workflow files (optional as calrissian will download all CWL files for us):
    ```
-   kubectl --namespace="$NAMESPACE_NAME" create -f StageWorkflowAndJobParams.yaml
+   kubectl --namespace="$NAMESPACE_NAME" create -f StageCWLFiles.yaml
    ```
    Monitor execution with:
    ```
-   watch kubectl --namespace="$NAMESPACE_NAME" logs -f job/stage-workflow-and-params
+   kubectl --namespace="$NAMESPACE_NAME" logs -f job/stage-cwl-files
    ```
 1. Run the workflow:
    ```
@@ -572,7 +578,7 @@ Building off of the previous run-pge example:
    ```
    Monitor execution with:
    ```
-   watch kubectl --namespace="$NAMESPACE_NAME" logs -f job/calrissian-job
+   kubectl --namespace="$NAMESPACE_NAME" logs -f job/calrissian-job
    ```
    Additionally, note the jobs and pods that were created by Calrissian as a result
    of the workflow submission:
