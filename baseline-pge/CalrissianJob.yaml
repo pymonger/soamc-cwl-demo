@@ -46,7 +46,8 @@ spec:
       restartPolicy: Never
       volumes:
       - name: calrissian-aws-creds
-        secret: aws-creds
+        secret:
+          secretName: aws-creds
       - name: calrissian-input-data
         persistentVolumeClaim:
           claimName: calrissian-input-data
