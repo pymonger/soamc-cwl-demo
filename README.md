@@ -227,9 +227,9 @@ Building off of the previous run-pge example:
    ```
 
    and insert the values for:
-   1. `aws_access_key_id`
-   1. `aws_secret_access_key`
-   1. `aws_session_token`
+   - `aws_access_key_id`
+   - `aws_secret_access_key`
+   - `aws_session_token`
 
    These values can be copied from your valid `$HOME/.aws/credentials` file.
 1. Run cwl-runner (to run singularity instead of docker, add `--singularity` option):
