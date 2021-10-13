@@ -2,13 +2,23 @@
 
 cwlVersion: v1.0
 class: Workflow
+$namespaces:
+  cwltool: http://commonwl.org/cwltool#
+hints:
+  "cwltool:Secrets":
+    secrets:
+      - workflow_aws_access_key_id
+      - workflow_aws_secret_access_key
+      - workflow_aws_session_token
 inputs:
   workflow_input_url: string
   workflow_input_file: string
   workflow_product_id: string
   workflow_min_sleep: int
   workflow_max_sleep: int
-  workflow_aws_creds: Directory
+  workflow_aws_access_key_id: string
+  workflow_aws_secret_access_key: string
+  workflow_aws_session_token: string
   workflow_base_dataset_url: string
 
 outputs:
@@ -60,7 +70,9 @@ steps:
   stage-out:
     run: stage-out.cwl
     in:
-      aws_creds: workflow_aws_creds
+      aws_access_key_id: workflow_aws_access_key_id
+      aws_secret_access_key: workflow_aws_secret_access_key
+      aws_session_token: workflow_aws_session_token
       dataset_dir: run-pge/dataset_dir
       base_dataset_url: workflow_base_dataset_url
     out:

@@ -4,6 +4,7 @@
 
 1. Clone repo:
    ```
+   cd /tmp
    git clone https://github.com/pymonger/soamc-cwl-demo.git
    cd soamc-cwl-demo
    ```
@@ -31,51 +32,51 @@
    Output should look similar to this:
 
    ```
-   INFO /Users/gmanipon/dev/azure/cwl_tutorial/env/bin/cwl-runner 3.1.20211004060744
-   INFO Resolved 'stage-in.cwl' to 'file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stage-in.cwl'
-   INFO [job stage-in.cwl] /private/tmp/docker_tmpag6dga47$ docker \
+   INFO /private/tmp/soamc-cwl-demo/env/bin/cwl-runner 3.1.20211004060744
+   INFO Resolved 'stage-in.cwl' to 'file:///private/tmp/soamc-cwl-demo/baseline-pge/stage-in.cwl'
+   INFO [job stage-in.cwl] /private/tmp/docker_tmpw24o8sn7$ docker \
        run \
        -i \
-       --mount=type=bind,source=/private/tmp/docker_tmpag6dga47,target=/OQWxDM \
-       --mount=type=bind,source=/private/tmp/docker_tmpbb54xxdi,target=/tmp \
-       --workdir=/OQWxDM \
+       --mount=type=bind,source=/private/tmp/docker_tmpw24o8sn7,target=/CdvYQv \
+       --mount=type=bind,source=/private/tmp/docker_tmp3br6aq3q,target=/tmp \
+       --workdir=/CdvYQv \
        --read-only=true \
        --log-driver=none \
        --user=503:20 \
        --rm \
-       --cidfile=/private/tmp/docker_tmpfbfjgz7_/20211007172154-707101.cid \
+       --cidfile=/private/tmp/docker_tmpm7s6fyel/20211013112035-882333.cid \
        --env=TMPDIR=/tmp \
-       --env=HOME=/OQWxDM \
+       --env=HOME=/CdvYQv \
        curlimages/curl \
        curl \
        -O \
-       https://s3-us-west-2.amazonaws.com/landsat-pds/L8/010/117/LC80101172015002LGN00/LC80101172015002LGN00_BQA.TIF > /private/tmp/docker_tmpag6dga47/stdout_stage-in.txt 2> /private/tmp/docker_tmpag6dga47/stderr_stage-in.txt
-   INFO [job stage-in.cwl] Max memory used: 45MiB
+       https://s3-us-west-2.amazonaws.com/landsat-pds/L8/010/117/LC80101172015002LGN00/LC80101172015002LGN00_BQA.TIF > /private/tmp/docker_tmpw24o8sn7/stdout_stage-in.txt 2> /private/tmp/docker_tmpw24o8sn7/stderr_stage-in.txt
+   INFO [job stage-in.cwl] Max memory used: 29MiB
    INFO [job stage-in.cwl] completed success
-   {   
+   {
        "localized_file": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/LC80101172015002LGN00_BQA.TIF",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/LC80101172015002LGN00_BQA.TIF",
            "basename": "LC80101172015002LGN00_BQA.TIF",
            "class": "File",
            "checksum": "sha1$e85ca3c7a92887593c1caa434bbc17893650baf4",
            "size": 2861879,
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/LC80101172015002LGN00_BQA.TIF"
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/LC80101172015002LGN00_BQA.TIF"
        },
        "stderr_file": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stderr_stage-in.txt",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/stderr_stage-in.txt",
            "basename": "stderr_stage-in.txt",
            "class": "File",
-           "checksum": "sha1$0223f85f3418bf15db0d4b1d059322b0a5826068",
-           "size": 554,
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stderr_stage-in.txt"
+           "checksum": "sha1$4bafbbce27f4008c294125b0bb85088a9db071ea",
+           "size": 475,
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/stderr_stage-in.txt"
        },
        "stdout_file": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stdout_stage-in.txt",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/stdout_stage-in.txt",
            "basename": "stdout_stage-in.txt",
            "class": "File",
            "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
            "size": 0,
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stdout_stage-in.txt"
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/stdout_stage-in.txt"
        }
    }
    INFO Final process status is success
@@ -101,92 +102,92 @@ Building off of the previous stage-in example:
    Output should look similar to this:
 
    ```
-   INFO /Users/gmanipon/dev/azure/cwl_tutorial/env/bin/cwl-runner 3.1.20211004060744
-   INFO Resolved 'run-pge.cwl' to 'file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/run-pge.cwl'
-   INFO [job run-pge.cwl] /private/tmp/docker_tmp6sqzkomy$ docker \
+   INFO /private/tmp/soamc-cwl-demo/env/bin/cwl-runner 3.1.20211004060744
+   INFO Resolved 'run-pge.cwl' to 'file:///private/tmp/soamc-cwl-demo/baseline-pge/run-pge.cwl'
+   INFO [job run-pge.cwl] /private/tmp/docker_tmpm980jn4y$ docker \
        run \
        -i \
-       --mount=type=bind,source=/private/tmp/docker_tmp6sqzkomy,target=/gZSlkl \
-       --mount=type=bind,source=/private/tmp/docker_tmpik3exlhk,target=/tmp \
-       --mount=type=bind,source=/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/LC80101172015002LGN00_BQA.TIF,target=/gZSlkl/LC80101172015002LGN00_BQA.TIF,readonly \
-       --workdir=/gZSlkl \
+       --mount=type=bind,source=/private/tmp/docker_tmpm980jn4y,target=/HqZEZA \
+       --mount=type=bind,source=/private/tmp/docker_tmpnxx13llx,target=/tmp \
+       --mount=type=bind,source=/private/tmp/soamc-cwl-demo/baseline-pge/LC80101172015002LGN00_BQA.TIF,target=/HqZEZA/LC80101172015002LGN00_BQA.TIF,readonly \
+       --workdir=/HqZEZA \
        --log-driver=none \
        --rm \
-       --cidfile=/private/tmp/docker_tmpa09ln010/20211007172717-055820.cid \
+       --cidfile=/private/tmp/docker_tmpr2b724l7/20211013112151-243100.cid \
        --env=TMPDIR=/tmp \
-       --env=HOME=/gZSlkl \
+       --env=HOME=/HqZEZA \
        pymonger/baseline-pge:develop \
        /home/ops/verdi/ops/baseline_pge/dumby_landsat_cwl.sh \
        dumby-product-20210622191038567000 \
        30 \
        60 \
-       /gZSlkl/LC80101172015002LGN00_BQA.TIF > /private/tmp/docker_tmp6sqzkomy/stdout_run-pge.txt 2> /private/tmp/docker_tmp6sqzkomy/stderr_run-pge.txt
-   INFO [job run-pge.cwl] Max memory used: 9951MiB
+       /HqZEZA/LC80101172015002LGN00_BQA.TIF > /private/tmp/docker_tmpm980jn4y/stdout_run-pge.txt 2> /private/tmp/docker_tmpm980jn4y/stderr_run-pge.txt
+   INFO [job run-pge.cwl] Max memory used: 10836MiB
    INFO [job run-pge.cwl] completed success
    {
        "dataset_dir": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000",
            "basename": "dumby-product-20210622191038567000",
            "class": "Directory",
            "listing": [
                {
                    "class": "File",
-                   "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.met.json",
+                   "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.met.json",
                    "basename": "dumby-product-20210622191038567000.met.json",
-                   "checksum": "sha1$01f65847089e5cfdab463ebe5b196d4bf33d701b",
+                   "checksum": "sha1$246d5220f788052517503f449c36327a2af84599",
                    "size": 186,
-                   "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.met.json"
+                   "path": "/private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.met.json"
                },
                {
                    "class": "File",
-                   "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/LC80101172015002LGN00_BQA.TIF",
+                   "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/LC80101172015002LGN00_BQA.TIF",
                    "basename": "LC80101172015002LGN00_BQA.TIF",
                    "checksum": "sha1$e85ca3c7a92887593c1caa434bbc17893650baf4",
                    "size": 2861879,
-                   "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/LC80101172015002LGN00_BQA.TIF"
+                   "path": "/private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/LC80101172015002LGN00_BQA.TIF"
                },
                {
                    "class": "File",
-                   "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.dataset.json",
+                   "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.dataset.json",
                    "basename": "dumby-product-20210622191038567000.dataset.json",
                    "checksum": "sha1$bf21a9e8fbc5a3846fb05b4fa0859e0917b2202f",
                    "size": 2,
-                   "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.dataset.json"
+                   "path": "/private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.dataset.json"
                },
                {
                    "class": "File",
-                   "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse.png",
+                   "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse.png",
                    "basename": "dumby-product-20210622191038567000.browse.png",
-                   "checksum": "sha1$33a7daa110dd3cf9b330d1556b20592b59bb57f7",
+                   "checksum": "sha1$e1cc7b0015673131c184b39773b6fa2f217d3297",
                    "size": 2477207,
-                   "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse.png"
+                   "path": "/private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse.png"
                },
                {
                    "class": "File",
-                   "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse_small.png",
+                   "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse_small.png",
                    "basename": "dumby-product-20210622191038567000.browse_small.png",
-                   "checksum": "sha1$65a7b27d4cb0bbda25e1a947a900d274e57b1cd9",
+                   "checksum": "sha1$c6123694cd279598b606600137fee3f236578a1f",
                    "size": 80019,
-                   "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse_small.png"
+                   "path": "/private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse_small.png"
                }
            ],
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000"
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000"
        },
        "stderr_file": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stderr_run-pge.txt",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/stderr_run-pge.txt",
            "basename": "stderr_run-pge.txt",
            "class": "File",
-           "checksum": "sha1$f7f8c8c185ce9b18d9cbeeb1a00b9f9717614e7a",
-           "size": 85279170,
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stderr_run-pge.txt"
+           "checksum": "sha1$1558d086b1c405f3d9d823748f084f2ea603acea",
+           "size": 49989988,
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/stderr_run-pge.txt"
        },
        "stdout_file": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stdout_run-pge.txt",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/stdout_run-pge.txt",
            "basename": "stdout_run-pge.txt",
            "class": "File",
            "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
            "size": 0,
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stdout_run-pge.txt"
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/stdout_run-pge.txt"
        }
    }
    INFO Final process status is success
@@ -194,12 +195,16 @@ Building off of the previous stage-in example:
 1. Verify that the `dumby-product-20210622191038567000` dataset directory was created:
    ```
    ls -ltr dumby-product-20210622191038567000/
+   ```
+
+   Output should look similar to this:
+   ``` 
    total 12040
-   -rw-r--r--  1 gmanipon  wheel  2861879 Oct  7 17:38 LC80101172015002LGN00_BQA.TIF
-   -rw-r--r--  1 gmanipon  wheel        2 Oct  7 17:38 dumby-product-20210622191038567000.dataset.json
-   -rw-r--r--  1 gmanipon  wheel      186 Oct  7 17:38 dumby-product-20210622191038567000.met.json
-   -rw-r--r--  1 gmanipon  wheel  2477207 Oct  7 17:38 dumby-product-20210622191038567000.browse.png
-   -rw-r--r--  1 gmanipon  wheel    80019 Oct  7 17:38 dumby-product-20210622191038567000.browse_small.png
+   -rw-r--r--  1 gmanipon  wheel  2861879 Oct 13 11:22 LC80101172015002LGN00_BQA.TIF
+   -rw-r--r--  1 gmanipon  wheel        2 Oct 13 11:22 dumby-product-20210622191038567000.dataset.json
+   -rw-r--r--  1 gmanipon  wheel      186 Oct 13 11:22 dumby-product-20210622191038567000.met.json
+   -rw-r--r--  1 gmanipon  wheel  2477207 Oct 13 11:22 dumby-product-20210622191038567000.browse.png
+   -rw-r--r--  1 gmanipon  wheel    80019 Oct 13 11:22 dumby-product-20210622191038567000.browse_small.png
    ```
 
 ## Run stage-out example
@@ -211,12 +216,22 @@ Building off of the previous run-pge example:
    ```
 1. Ensure that the `dumby-product-20210622191038567000` dataset directory exists there. 
    If not, run the `run-pge` example above.
-1. Edit the `stage-out-job.yml` and replace the value of
-   1. `path` under `aws_creds` from `/Users/gmanipon/.aws` to the path of your AWS 
-      credentials located in your environment. Don't use environment variables 
-      (e.g. `$HOME/.aws`) but actual absolute paths.
-   1. `base_dataset_url` from `s3://nisar-dev/test` to the path of some S3 bucket
-      under your AWS account.
+1. Copy the `stage-out-job.yml.tmpl` file to `stage-out-job.yml`:
+   ```
+   cp stage-out-job.yml.tmpl stage-out-job.yml
+   ```
+
+   then edit `stage-out-job.yml`:
+   ```
+   vi stage-out-job.yml
+   ```
+
+   and insert the values for:
+   1. `aws_access_key_id`
+   1. `aws_secret_access_key`
+   1. `aws_session_token`
+
+   These values can be copied from your valid `$HOME/.aws/credentials` file.
 1. Run cwl-runner (to run singularity instead of docker, add `--singularity` option):
    ```
    cwl-runner stage-out.cwl stage-out-job.yml 
@@ -225,45 +240,45 @@ Building off of the previous run-pge example:
    Output should look similar to this:
 
    ```
-   INFO /Users/gmanipon/dev/soamc-cwl-demo/env/bin/cwl-runner 3.1.20211004060744
-   INFO Resolved 'stage-out.cwl' to 'file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stage-out.cwl'
-   INFO [job stage-out.cwl] /private/tmp/docker_tmpp7q_a2yz$ docker \
+   INFO /private/tmp/soamc-cwl-demo/env/bin/cwl-runner 3.1.20211004060744
+   INFO Resolved 'stage-out.cwl' to 'file:///private/tmp/soamc-cwl-demo/baseline-pge/stage-out.cwl'
+   INFO stage-out.cwl:1:1: Unknown hint http://commonwl.org/cwltool#Secrets
+   INFO [job stage-out.cwl] /private/tmp/docker_tmpcdvi5w2n$ docker \
        run \
        -i \
-       --mount=type=bind,source=/private/tmp/docker_tmpp7q_a2yz,target=/EkRGFX \
-       --mount=type=bind,source=/private/tmp/docker_tmp0sdfjri4,target=/tmp \
-       --mount=type=bind,source=/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000,target=/var/lib/cwl/stg2acb15a4-511f-4d1d-bc4c-73e89f736555/dumby-product-20210622191038567000,readonly \
-       --mount=type=bind,source=/Users/gmanipon/.aws,target=/EkRGFX/.aws,readonly \
-       --workdir=/EkRGFX \
+       --mount=type=bind,source=/private/tmp/docker_tmpcdvi5w2n,target=/VAEwUP \
+       --mount=type=bind,source=/private/tmp/docker_tmpn5lxawn3,target=/tmp \
+       --mount=type=bind,source=/private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000,target=/var/lib/cwl/stg314eda98-c5a9-4f9b-8250-0d9353df7f4f/dumby-product-20210622191038567000,readonly \
+       --workdir=/VAEwUP \
        --read-only=true \
        --log-driver=none \
        --user=503:20 \
        --rm \
-       --cidfile=/private/tmp/docker_tmpz6ss2lta/20211013085624-979712.cid \
+       --cidfile=/private/tmp/docker_tmpyswmeaq8/20211013113022-379989.cid \
        --env=TMPDIR=/tmp \
-       --env=HOME=/EkRGFX \
+       --env=HOME=/VAEwUP \
        pymonger/aws-cli \
        sh \
        -c \
-       'if [ ! -d $HOME/.aws ]; then cp -rp .aws $HOME/; fi && aws s3 cp --recursive /var/lib/cwl/stg2acb15a4-511f-4d1d-bc4c-73e89f736555/dumby-product-20210622191038567000 s3://nisar-dev/test' > /private/tmp/docker_tmpp7q_a2yz/stdout_stage-out.txt 2> /private/tmp/docker_tmpp7q_a2yz/stderr_stage-out.txt
-   INFO [job stage-out.cwl] Max memory used: 717MiB
+       'if [ ! -d $HOME/.aws ]; then cp -rp .aws $HOME/; fi && aws s3 cp --recursive /var/lib/cwl/stg314eda98-c5a9-4f9b-8250-0d9353df7f4f/dumby-product-20210622191038567000 s3://nisar-dev/test' > /private/tmp/docker_tmpcdvi5w2n/stdout_stage-out.txt 2> /private/tmp/docker_tmpcdvi5w2n/stderr_stage-out.txt
+   INFO [job stage-out.cwl] Max memory used: 897MiB
    INFO [job stage-out.cwl] completed success
    {
        "stderr_file": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stderr_stage-out.txt",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/stderr_stage-out.txt",
            "basename": "stderr_stage-out.txt",
            "class": "File",
            "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
            "size": 0,
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stderr_stage-out.txt"
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/stderr_stage-out.txt"
        },
        "stdout_file": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stdout_stage-out.txt",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/stdout_stage-out.txt",
            "basename": "stdout_stage-out.txt",
            "class": "File",
-           "checksum": "sha1$856a74a159927176f146576a2a95d9a74e777e1d",
-           "size": 2873,
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stdout_stage-out.txt"
+           "checksum": "sha1$238138c2124c8ff1573f2cd63539b6dc1c5f43d5",
+           "size": 2883,
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/stdout_stage-out.txt"
        }
    }
    INFO Final process status is success
@@ -276,11 +291,11 @@ Building off of the previous run-pge example:
 
    Output should look similar to this:
    ```
-   2021-10-13 08:56:27    2861879 LC80101172015002LGN00_BQA.TIF
-   2021-10-13 08:56:27    2477207 dumby-product-20210622191038567000.browse.png
-   2021-10-13 08:56:27      80019 dumby-product-20210622191038567000.browse_small.png
-   2021-10-13 08:56:27          2 dumby-product-20210622191038567000.dataset.json
-   2021-10-13 08:56:27        186 dumby-product-20210622191038567000.met.json
+   2021-10-13 11:30:25    2861879 LC80101172015002LGN00_BQA.TIF
+   2021-10-13 11:30:25    2477207 dumby-product-20210622191038567000.browse.png
+   2021-10-13 11:30:25      80019 dumby-product-20210622191038567000.browse_small.png
+   2021-10-13 11:30:25          2 dumby-product-20210622191038567000.dataset.json
+   2021-10-13 11:30:25        186 dumby-product-20210622191038567000.met.json
    ```
 
 ## Run 3-step workflow (stage-in, run-pge & stage-out) example
@@ -293,6 +308,22 @@ Building off of the previous run-pge example:
    ```
    rm -rf LC80101172015002LGN00_BQA.TIF dumby-product-20210622191038567000 *.txt
    ```
+1. Copy the `baseline-pge-workflow-job.yml.tmpl` file to `baseline-pge-workflow-job.yml`:
+   ```
+   cp baseline-pge-workflow-job.yml.tmpl baseline-pge-workflow-job.yml
+   ```
+
+   then edit `baseline-pge-workflow-job.yml`:
+   ```
+   vi baseline-pge-workflow-job.yml
+   ```
+
+   and insert the values for:
+   1. `workflow_aws_access_key_id`
+   1. `workflow_aws_secret_access_key`
+   1. `workflow_aws_session_token`
+
+   These values can be copied from your valid `$HOME/.aws/credentials` file.
 1. Run cwl-runner (to run singularity instead of docker, add `--singularity` option):
    ```
    cwl-runner --no-match-user --no-read-only baseline-pge-workflow.cwl baseline-pge-workflow-job.yml
@@ -301,194 +332,203 @@ Building off of the previous run-pge example:
    Output should look similar to this:
 
    ```
-   INFO /Users/gmanipon/dev/soamc-cwl-demo/env/bin/cwltool 3.1.20211004060744
-   INFO Resolved 'baseline-pge-workflow.cwl' to 'file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/baseline-pge-workflow.cwl'
+   INFO /private/tmp/soamc-cwl-demo/env/bin/cwl-runner 3.1.20211004060744
+   INFO Resolved 'baseline-pge-workflow.cwl' to 'file:///private/tmp/soamc-cwl-demo/baseline-pge/baseline-pge-workflow.cwl'
+   INFO baseline-pge-workflow.cwl:1:1: Unknown hint http://commonwl.org/cwltool#Secrets
+   INFO stage-out.cwl:1:1: Unknown hint http://commonwl.org/cwltool#Secrets
    INFO [workflow ] start
    INFO [workflow ] starting step stage-in
    INFO [step stage-in] start
-   INFO [job stage-in] /private/tmp/docker_tmpwuf9teik$ docker \
+   INFO [job stage-in] /private/tmp/docker_tmpaiu05iwc$ docker \
        run \
        -i \
-       --mount=type=bind,source=/private/tmp/docker_tmpwuf9teik,target=/YxCGZT \
-       --mount=type=bind,source=/private/tmp/docker_tmpyioyegp7,target=/tmp \
-       --workdir=/YxCGZT \
+       --mount=type=bind,source=/private/tmp/docker_tmpaiu05iwc,target=/CfDTKw \
+       --mount=type=bind,source=/private/tmp/docker_tmpl83otpw1,target=/tmp \
+       --workdir=/CfDTKw \
        --log-driver=none \
        --rm \
-       --cidfile=/private/tmp/docker_tmplia39pvh/20211013090620-804504.cid \
+       --cidfile=/private/tmp/docker_tmpr2bzm68c/20211013113438-398777.cid \
        --env=TMPDIR=/tmp \
-       --env=HOME=/YxCGZT \
+       --env=HOME=/CfDTKw \
        curlimages/curl \
        curl \
        -O \
-       https://s3-us-west-2.amazonaws.com/landsat-pds/L8/010/117/LC80101172015002LGN00/LC80101172015002LGN00_BQA.TIF > /private/tmp/docker_tmpwuf9teik/stdout_stage-in.txt 2> /private/tmp/docker_tmpwuf9teik/stderr_stage-in.txt
-   INFO [job stage-in] Max memory used: 0MiB
+       https://s3-us-west-2.amazonaws.com/landsat-pds/L8/010/117/LC80101172015002LGN00/LC80101172015002LGN00_BQA.TIF > /private/tmp/docker_tmpaiu05iwc/stdout_stage-in.txt 2> /private/tmp/docker_tmpaiu05iwc/stderr_stage-in.txt
+   INFO [job stage-in] Max memory used: 36MiB
    INFO [job stage-in] completed success
    INFO [step stage-in] completed success
    INFO [workflow ] starting step run-pge
    INFO [step run-pge] start
-   INFO [job run-pge] /private/tmp/docker_tmp2ugbe61w$ docker \
+   INFO [job run-pge] /private/tmp/docker_tmp8w9zo_4d$ docker \
        run \
        -i \
-       --mount=type=bind,source=/private/tmp/docker_tmp2ugbe61w,target=/YxCGZT \
-       --mount=type=bind,source=/private/tmp/docker_tmpqtldf81x,target=/tmp \
-       --mount=type=bind,source=/private/tmp/docker_tmpwuf9teik/LC80101172015002LGN00_BQA.TIF,target=/YxCGZT/LC80101172015002LGN00_BQA.TIF,readonly \
-       --workdir=/YxCGZT \
+       --mount=type=bind,source=/private/tmp/docker_tmp8w9zo_4d,target=/CfDTKw \
+       --mount=type=bind,source=/private/tmp/docker_tmp5hofw8pm,target=/tmp \
+       --mount=type=bind,source=/private/tmp/docker_tmpaiu05iwc/LC80101172015002LGN00_BQA.TIF,target=/CfDTKw/LC80101172015002LGN00_BQA.TIF,readonly \
+       --workdir=/CfDTKw \
        --log-driver=none \
        --rm \
-       --cidfile=/private/tmp/docker_tmpidkk8fr6/20211013090622-861094.cid \
+       --cidfile=/private/tmp/docker_tmp4pgjke0z/20211013113440-733485.cid \
        --env=TMPDIR=/tmp \
-       --env=HOME=/YxCGZT \
+       --env=HOME=/CfDTKw \
        pymonger/baseline-pge:develop \
        /home/ops/verdi/ops/baseline_pge/dumby_landsat_cwl.sh \
        dumby-product-20210622191038567000 \
        30 \
        60 \
-       /YxCGZT/LC80101172015002LGN00_BQA.TIF > /private/tmp/docker_tmp2ugbe61w/stdout_run-pge.txt 2> /private/tmp/docker_tmp2ugbe61w/stderr_run-pge.txt
-   INFO [job run-pge] Max memory used: 8277MiB
+       /CfDTKw/LC80101172015002LGN00_BQA.TIF > /private/tmp/docker_tmp8w9zo_4d/stdout_run-pge.txt 2> /private/tmp/docker_tmp8w9zo_4d/stderr_run-pge.txt
+   INFO [job run-pge] Max memory used: 8241MiB
    INFO [job run-pge] completed success
    INFO [step run-pge] completed success
    INFO [workflow ] starting step stage-out
    INFO [step stage-out] start
-   INFO [job stage-out] /private/tmp/docker_tmpxqw3h2lp$ docker \
+   INFO [job stage-out] /private/tmp/docker_tmp72_qv_03$ docker \
        run \
        -i \
-       --mount=type=bind,source=/private/tmp/docker_tmpxqw3h2lp,target=/YxCGZT \
-       --mount=type=bind,source=/private/tmp/docker_tmp6xdsxk_n,target=/tmp \
-       --mount=type=bind,source=/private/tmp/docker_tmp2ugbe61w/dumby-product-20210622191038567000,target=/var/lib/cwl/stg3da502a4-ee74-444b-aa91-ce83e4ba88f7/dumby-product-20210622191038567000,readonly \
-       --mount=type=bind,source=/Users/gmanipon/.aws,target=/YxCGZT/.aws,readonly \
-       --workdir=/YxCGZT \
+       --mount=type=bind,source=/private/tmp/docker_tmp72_qv_03,target=/CfDTKw \
+       --mount=type=bind,source=/private/tmp/docker_tmpk7c4t_ee,target=/tmp \
+       --mount=type=bind,source=/private/tmp/docker_tmp8w9zo_4d/dumby-product-20210622191038567000,target=/var/lib/cwl/stg270668ef-14e0-4060-a461-d3885d4e0e13/dumby-product-20210622191038567000,readonly \
+       --workdir=/CfDTKw \
        --log-driver=none \
        --rm \
-       --cidfile=/private/tmp/docker_tmpiz6x44r2/20211013090718-090763.cid \
+       --cidfile=/private/tmp/docker_tmpqidfjgvb/20211013113529-414539.cid \
        --env=TMPDIR=/tmp \
-       --env=HOME=/YxCGZT \
+       --env=HOME=/CfDTKw \
        pymonger/aws-cli \
        sh \
        -c \
-       'if [ ! -d $HOME/.aws ]; then cp -rp .aws $HOME/; fi && aws s3 cp --recursive /var/lib/cwl/stg3da502a4-ee74-444b-aa91-ce83e4ba88f7/dumby-product-20210622191038567000 s3://nisar-dev/test' > /private/tmp/docker_tmpxqw3h2lp/stdout_stage-out.txt 2> /private/tmp/docker_tmpxqw3h2lp/stderr_stage-out.txt
-   INFO [job stage-out] Max memory used: 792MiB
+       'if [ ! -d $HOME/.aws ]; then cp -rp .aws $HOME/; fi && aws s3 cp --recursive /var/lib/cwl/stg270668ef-14e0-4060-a461-d3885d4e0e13/dumby-product-20210622191038567000 s3://nisar-dev/test' > /private/tmp/docker_tmp72_qv_03/stdout_stage-out.txt 2> /private/tmp/docker_tmp72_qv_03/stderr_stage-out.txt
+   INFO [job stage-out] Max memory used: 812MiB
    INFO [job stage-out] completed success
    INFO [step stage-out] completed success
    INFO [workflow ] completed success
    {
        "final_dataset_dir": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000",
            "basename": "dumby-product-20210622191038567000",
            "class": "Directory",
            "listing": [
                {
                    "class": "File",
-                   "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.met.json",
+                   "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.met.json",
                    "basename": "dumby-product-20210622191038567000.met.json",
-                   "checksum": "sha1$26672db1b9cf92a7f1160ccf14152bfea9e4af95",
+                   "checksum": "sha1$b149505ff1e02781d1e4d6500587156f52620b29",
                    "size": 186,
-                   "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.met.json"
+                   "path": "/private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.met.json"
                },
                {
                    "class": "File",
-                   "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/LC80101172015002LGN00_BQA.TIF",
+                   "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/LC80101172015002LGN00_BQA.TIF",
                    "basename": "LC80101172015002LGN00_BQA.TIF",
                    "checksum": "sha1$e85ca3c7a92887593c1caa434bbc17893650baf4",
                    "size": 2861879,
-                   "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/LC80101172015002LGN00_BQA.TIF"
+                   "path": "/private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/LC80101172015002LGN00_BQA.TIF"
                },
                {
                    "class": "File",
-                   "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.dataset.json",
+                   "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.dataset.json",
                    "basename": "dumby-product-20210622191038567000.dataset.json",
                    "checksum": "sha1$bf21a9e8fbc5a3846fb05b4fa0859e0917b2202f",
                    "size": 2,
-                   "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.dataset.json"
+                   "path": "/private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.dataset.json"
                },
                {
                    "class": "File",
-                   "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse.png",
+                   "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse.png",
                    "basename": "dumby-product-20210622191038567000.browse.png",
-                   "checksum": "sha1$dd17d0e203208221843fa870e4fc87b6abe7c68f",
+                   "checksum": "sha1$0dbe1bb1278f0e04293684ef2fa75819d9569fed",
                    "size": 2477207,
-                   "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse.png"
+                   "path": "/private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse.png"
                },
                {
                    "class": "File",
-                   "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse_small.png",
+                   "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse_small.png",
                    "basename": "dumby-product-20210622191038567000.browse_small.png",
-                   "checksum": "sha1$70f5516aeb017d6f47a98f4e6e44c648ac947c43",
+                   "checksum": "sha1$cabcd91334b9995f5b880899e5e723a3d7b300dd",
                    "size": 80019,
-                   "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse_small.png"
+                   "path": "/private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000/dumby-product-20210622191038567000.browse_small.png"
                }
            ],
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000"
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/dumby-product-20210622191038567000"
        },
        "stderr_run-pge": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stderr_run-pge.txt",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/stderr_run-pge.txt",
            "basename": "stderr_run-pge.txt",
            "class": "File",
-           "checksum": "sha1$66d68ff2147b7470ad813379385100cd26ef450c",
-           "size": 70248488,
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stderr_run-pge.txt"
+           "checksum": "sha1$c28c577bfdcc5618500a03e937c97a1fffd59a89",
+           "size": 57332924,
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/stderr_run-pge.txt"
        },
        "stderr_stage-in": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stderr_stage-in.txt",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/stderr_stage-in.txt",
            "basename": "stderr_stage-in.txt",
            "class": "File",
-           "checksum": "sha1$c8c3558ded10587359c3769da95a7d05f8fbec68",
+           "checksum": "sha1$436757093c81e6a128ebcbb440b085d62cb8b390",
            "size": 396,
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stderr_stage-in.txt"
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/stderr_stage-in.txt"
        },
        "stderr_stage-out": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stderr_stage-out.txt",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/stderr_stage-out.txt",
            "basename": "stderr_stage-out.txt",
            "class": "File",
            "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
            "size": 0,
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stderr_stage-out.txt"
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/stderr_stage-out.txt"
        },
        "stdout_run-pge": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stdout_run-pge.txt",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/stdout_run-pge.txt",
            "basename": "stdout_run-pge.txt",
            "class": "File",
            "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
            "size": 0,
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stdout_run-pge.txt"
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/stdout_run-pge.txt"
        },
        "stdout_stage-in": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stdout_stage-in.txt",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/stdout_stage-in.txt",
            "basename": "stdout_stage-in.txt",
            "class": "File",
            "checksum": "sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709",
            "size": 0,
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stdout_stage-in.txt"
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/stdout_stage-in.txt"
        },
        "stdout_stage-out": {
-           "location": "file:///Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stdout_stage-out.txt",
+           "location": "file:///private/tmp/soamc-cwl-demo/baseline-pge/stdout_stage-out.txt",
            "basename": "stdout_stage-out.txt",
            "class": "File",
-           "checksum": "sha1$19f8a27892fe995e6129dee6854dabc77ba14996",
-           "size": 2883,
-           "path": "/Users/gmanipon/dev/soamc-cwl-demo/baseline-pge/stdout_stage-out.txt"
+           "checksum": "sha1$07a7e4495c5a4ff244648bce275ad00f3d54dec0",
+           "size": 2885,
+           "path": "/private/tmp/soamc-cwl-demo/baseline-pge/stdout_stage-out.txt"
        }
    }
    INFO Final process status is success
    ```
-1. Verify that the`dumby-product-20210622191038567000` dataset directory exists locally and was staged to the
-   S3 bucket location.
+1. Verify that the`dumby-product-20210622191038567000` dataset directory exists locally:
+   ```
+   ls -ltr dumby-product-20210622191038567000/
+   ```
 
    Output should look similar to this:
    ```
-   ls -ltr dumby-product-20210622191038567000/
    total 12040
-   -rw-r--r--  1 gmanipon  wheel  2861879 Oct 13 09:07 LC80101172015002LGN00_BQA.TIF
-   -rw-r--r--  1 gmanipon  wheel        2 Oct 13 09:07 dumby-product-20210622191038567000.dataset.json
-   -rw-r--r--  1 gmanipon  wheel      186 Oct 13 09:07 dumby-product-20210622191038567000.met.json
-   -rw-r--r--  1 gmanipon  wheel  2477207 Oct 13 09:07 dumby-product-20210622191038567000.browse.png
-   -rw-r--r--  1 gmanipon  wheel    80019 Oct 13 09:07 dumby-product-20210622191038567000.browse_small.png
-   
+   -rw-r--r--  1 gmanipon  wheel  2861879 Oct 13 11:35 LC80101172015002LGN00_BQA.TIF
+   -rw-r--r--  1 gmanipon  wheel        2 Oct 13 11:35 dumby-product-20210622191038567000.dataset.json
+   -rw-r--r--  1 gmanipon  wheel      186 Oct 13 11:35 dumby-product-20210622191038567000.met.json
+   -rw-r--r--  1 gmanipon  wheel  2477207 Oct 13 11:35 dumby-product-20210622191038567000.browse.png
+   -rw-r--r--  1 gmanipon  wheel    80019 Oct 13 11:35 dumby-product-20210622191038567000.browse_small.png
+   ```
+
+   and was staged to the S3 bucket location:
+   ```
    aws s3 ls $(grep base_dataset_url stage-out-job.yml | awk '{print $2}')/
-   2021-10-13 09:07:21    2861879 LC80101172015002LGN00_BQA.TIF
-   2021-10-13 09:07:21    2477207 dumby-product-20210622191038567000.browse.png
-   2021-10-13 09:07:21      80019 dumby-product-20210622191038567000.browse_small.png
-   2021-10-13 09:07:21          2 dumby-product-20210622191038567000.dataset.json
-   2021-10-13 09:07:21        186 dumby-product-20210622191038567000.met.json
+   ```
+
+   Output should look similar to this:
+   ```
+   2021-10-13 11:35:32    2861879 LC80101172015002LGN00_BQA.TIF
+   2021-10-13 11:35:32    2477207 dumby-product-20210622191038567000.browse.png
+   2021-10-13 11:35:32      80019 dumby-product-20210622191038567000.browse_small.png
+   2021-10-13 11:35:32          2 dumby-product-20210622191038567000.dataset.json
+   2021-10-13 11:35:32        186 dumby-product-20210622191038567000.met.json
    ```
 
 ## Run 3-step workflow (stage-in, run-pge & stage-out) example on K8s (Kubernetes) via Calrissian

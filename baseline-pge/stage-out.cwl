@@ -2,13 +2,27 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
+$namespaces:
+  cwltool: http://commonwl.org/cwltool#
 hints:
+  "cwltool:Secrets":
+    secrets:
+      - aws_access_key_id
+      - aws_secret_access_key
+      - aws_session_token
   DockerRequirement:
     dockerPull: pymonger/aws-cli
 requirements:
   InitialWorkDirRequirement:
     listing:
-      - entry: $(inputs.aws_creds)
+      - entryname: .aws/credentials
+        entry: |
+          [default]
+          output = json
+          region = us-west-2
+          aws_access_key_id = $(inputs.aws_access_key_id)
+          aws_secret_access_key = $(inputs.aws_secret_access_key)
+          aws_session_token = $(inputs.aws_session_token)
 
 # the following baseCommand and arguments work on docker but not singularity
 #baseCommand: [aws]
@@ -26,8 +40,9 @@ arguments:
   aws s3 cp --recursive $(inputs.dataset_dir.path) $(inputs.base_dataset_url)
 
 inputs:
-  aws_creds:
-    type: Directory
+  aws_access_key_id: string
+  aws_secret_access_key: string
+  aws_session_token: string
   dataset_dir:
     type: Directory
     # uncomment these if using baseCommand: [aws]
