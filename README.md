@@ -744,3 +744,39 @@ Building off of the previous run-pge example:
    2021-10-13 13:32:49          2 dumby-product-20210622191038567000.dataset.json
    2021-10-13 13:32:49        189 dumby-product-20210622191038567000.met.json
    ```
+
+## K8s Caveats
+
+### Azure
+
+The default storage class utilizes azure disk which doesn't support `ReadWriteMany` which is required by
+Calrissian. To change the default storage class to azure-file (which supports `ReadWriteMany`):
+
+```
+$ kubectl get storageclass
+NAME                PROVISIONER                RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+azurefile           kubernetes.io/azure-file   Delete          Immediate              true                   106d
+azurefile-premium   kubernetes.io/azure-file   Delete          Immediate              true                   106d
+default (default)   kubernetes.io/azure-disk   Delete          WaitForFirstConsumer   true                   106d
+managed-premium     kubernetes.io/azure-disk   Delete          WaitForFirstConsumer   true                   106d
+
+$ kubectl patch storageclass default -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
+storageclass.storage.k8s.io/default patched
+
+$ kubectl get storageclass
+NAME                PROVISIONER                RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+azurefile           kubernetes.io/azure-file   Delete          Immediate              true                   106d
+azurefile-premium   kubernetes.io/azure-file   Delete          Immediate              true                   106d
+default             kubernetes.io/azure-disk   Delete          WaitForFirstConsumer   true                   106d
+managed-premium     kubernetes.io/azure-disk   Delete          WaitForFirstConsumer   true                   106d
+
+$ kubectl patch storageclass azurefile -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+storageclass.storage.k8s.io/azurefile patched
+
+$ kubectl get storageclass
+NAME                  PROVISIONER                RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+azurefile (default)   kubernetes.io/azure-file   Delete          Immediate              true                   106d
+azurefile-premium     kubernetes.io/azure-file   Delete          Immediate              true                   106d
+default               kubernetes.io/azure-disk   Delete          WaitForFirstConsumer   true                   106d
+managed-premium       kubernetes.io/azure-disk   Delete          WaitForFirstConsumer   true                   106d
+```
