@@ -554,11 +554,15 @@ Building off of the previous run-pge example:
    kubectl --namespace="$NAMESPACE_NAME" create rolebinding log-reader-default-binding \
      --role=log-reader-role --serviceaccount=${NAMESPACE_NAME}:default
    ```
-1. Create secret containing AWS creds:
+1. Create secret containing AWS creds. Set the following env variables manually:
    ```
    export aws_access_key_id="<your AWS access key ID>"
    export aws_secret_access_key="<your AWS secret access key>"
    export aws_session_token="<your AWS session token>"
+   ```
+
+   Then write them to a K8s secret: 
+   ```
    kubectl --namespace="$NAMESPACE_NAME" create secret generic aws-creds \
      --from-literal=aws_access_key_id="$aws_access_key_id" \
      --from-literal=aws_secret_access_key="$aws_secret_access_key" \
