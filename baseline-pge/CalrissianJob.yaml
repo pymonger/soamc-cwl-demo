@@ -9,11 +9,13 @@ spec:
       containers:
       - name: calrissian-job
         image: pymonger/calrissian:latest
+        imagePullPolicy: Always
         envFrom:
           - secretRef:
               name: aws-creds
         command: ["calrissian"]
         args:
+          - "--debug"
           - "--stdout"
           - "/calrissian/output-data/docker-output.json"
           - "--stderr"

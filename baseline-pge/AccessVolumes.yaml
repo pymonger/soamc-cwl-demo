@@ -4,8 +4,8 @@ metadata:
   name: access-pv
 spec:
   containers:
-  - name: alpine
-    image: alpine:latest
+  - name: access-volumes
+    image: pymonger/calrissian:latest
     command: ["sleep", "infinity"]
     volumeMounts:
       - mountPath: /calrissian/input-data
