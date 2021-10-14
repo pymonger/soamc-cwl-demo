@@ -568,6 +568,12 @@ Building off of the previous run-pge example:
    ```
    kubectl --namespace="$NAMESPACE_NAME" create -f VolumeClaims.yaml
    ```
+
+   If on GKE (Google Kubernetes Engine), see the GKE caveat below to create an
+   NFS server to support `ReadWriteMany` and run this afterwards:
+   ```
+   kubectl --namespace="$NAMESPACE_NAME" create -f GKE/VolumeClaims.yaml
+   ```
 1. Stage CWL workflow files (optional as calrissian will download all CWL files for us):
    ```
    kubectl --namespace="$NAMESPACE_NAME" create -f StageCWLFiles.yaml
@@ -747,7 +753,7 @@ Building off of the previous run-pge example:
 
 ## K8s Caveats
 
-### Azure
+### Azure Kubernetes Service
 
 The default storage class utilizes azure disk which doesn't support `ReadWriteMany` which is required by
 Calrissian. To change the default storage class to azure-file (which supports `ReadWriteMany`):
@@ -779,4 +785,27 @@ azurefile (default)   kubernetes.io/azure-file   Delete          Immediate      
 azurefile-premium     kubernetes.io/azure-file   Delete          Immediate              true                   106d
 default               kubernetes.io/azure-disk   Delete          WaitForFirstConsumer   true                   106d
 managed-premium       kubernetes.io/azure-disk   Delete          WaitForFirstConsumer   true                   106d
+```
+
+### Google Kubernetes Engine
+
+The default storage class utilizes Google persistent disk which doesn't support `ReadWriteMany` 
+which is required by Calrissian. Google Cloud Filestore resolves this issue but it is a costly
+solution. The alternative is to run NFS in the GKE cluster as described here:
+https://medium.com/@Sushil_Kumar/readwritemany-persistent-volumes-in-google-kubernetes-engine-a0b93e203180
+
+Run the following to proceed with setting up an NFS server on your GKE cluster:
+```
+# provision a GCP persistent disk
+gcloud compute disks create --size=10GB --zone=us-west2-a nfs-disk
+
+# provision NFS deployment
+kubectl create -f GKE/nfs-server-deployment.yaml
+
+# make NFS server accessible at a fixed IP/DNS
+kubectl create -f GKE/nfs-clusterip-service.yaml
+```
+After this, continue with step 5 above but instead use the `GKE/VolumeClaims.yaml` instead:
+```
+kubectl --namespace="$NAMESPACE_NAME" create -f GKE/VolumeClaims.yaml
 ```
