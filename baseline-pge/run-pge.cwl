@@ -4,7 +4,7 @@ cwlVersion: v1.0
 class: CommandLineTool
 hints:
   DockerRequirement:
-    dockerPull: pymonger/baseline-pge:develop
+    dockerPull: pymonger/baseline-pge:latest
 baseCommand: [/home/ops/verdi/ops/baseline_pge/dumby_landsat_cwl.sh]
 requirements:
   InitialWorkDirRequirement:
