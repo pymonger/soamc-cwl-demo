@@ -535,6 +535,16 @@ DAG workflow.
    ```
 
 ## Run 3-step workflow (stage-in, run-pge & stage-out) example on K8s (Kubernetes) via Calrissian
+Now that we've seen the execution of the workflow on a local machine, it's time to execute the
+workflow on a K8s cluster. Once again the following image depicts the graph visualiation (dot) 
+of the DAG workflow.
+
+![baseline-pge-workflow](images/baseline-pge-workflow.png?raw=true "baseline-pge-workflow")
+
+In the previous section, we used `cwl-runner` to execute the CWL workflow which proceeded to
+spawn 3 containers corresponding to the 3 steps in the workflow. In this example, we submit
+a K8s job to run Calrissian, a CWL-compliant implementation that supports execution of
+workflows and their composite steps as K8s jobs.
 
 1. Change to `baseline-pge` directory:
    ```
