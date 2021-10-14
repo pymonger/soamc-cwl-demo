@@ -46,7 +46,7 @@ spec:
           - "--workflow_aws_secret_access_key"
           - "$(aws_secret_access_key)"
           - "--workflow_base_dataset_url"
-          - "s3://hysds-dataset-bucket-gman-test/docker_on_desktop"
+          - "s3://hysds-dataset-bucket-gman-test/test"
         volumeMounts:
         - mountPath: /calrissian/input-data
           name: calrissian-input-data
