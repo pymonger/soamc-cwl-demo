@@ -45,10 +45,8 @@ spec:
           - "$(aws_access_key_id)"
           - "--workflow_aws_secret_access_key"
           - "$(aws_secret_access_key)"
-          - "--workflow_aws_session_token"
-          - "$(aws_session_token)"
           - "--workflow_base_dataset_url"
-          - "s3://nisar-dev/test"
+          - "s3://hysds-dataset-bucket-gman-test/test"
         volumeMounts:
         - mountPath: /calrissian/input-data
           name: calrissian-input-data

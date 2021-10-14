@@ -229,7 +229,6 @@ Building off of the previous run-pge example:
    and insert the values for:
    - `aws_access_key_id`
    - `aws_secret_access_key`
-   - `aws_session_token`
 
    These values can be copied from your valid `$HOME/.aws/credentials` file.
 1. Run cwl-runner (to run singularity instead of docker, add `--singularity` option):
@@ -260,7 +259,7 @@ Building off of the previous run-pge example:
        pymonger/aws-cli \
        sh \
        -c \
-       'if [ ! -d $HOME/.aws ]; then cp -rp .aws $HOME/; fi && aws s3 cp --recursive /var/lib/cwl/stg3de9dfb8-71ea-4f80-ba8b-afd10683c161/dumby-product-20210622191038567000 s3://nisar-dev/test/dumby-product-20210622191038567000' > /private/tmp/docker_tmpeyl3v48v/stdout_stage-out.txt 2> /private/tmp/docker_tmpeyl3v48v/stderr_stage-out.txt
+       'if [ ! -d $HOME/.aws ]; then cp -rp .aws $HOME/; fi && aws s3 cp --recursive /var/lib/cwl/stg3de9dfb8-71ea-4f80-ba8b-afd10683c161/dumby-product-20210622191038567000 s3://hysds-dataset-bucket-gman-test/test/dumby-product-20210622191038567000' > /private/tmp/docker_tmpeyl3v48v/stdout_stage-out.txt 2> /private/tmp/docker_tmpeyl3v48v/stderr_stage-out.txt
    INFO [job stage-out.cwl] Max memory used: 878MiB
    INFO [job stage-out.cwl] completed success
    {
@@ -321,7 +320,6 @@ Building off of the previous run-pge example:
    and insert the values for:
    1. `workflow_aws_access_key_id`
    1. `workflow_aws_secret_access_key`
-   1. `workflow_aws_session_token`
 
    These values can be copied from your valid `$HOME/.aws/credentials` file.
 1. Run cwl-runner (to run singularity instead of docker, add `--singularity` option):
@@ -397,7 +395,7 @@ Building off of the previous run-pge example:
        pymonger/aws-cli \
        sh \
        -c \
-       'if [ ! -d $HOME/.aws ]; then cp -rp .aws $HOME/; fi && aws s3 cp --recursive /var/lib/cwl/stg0598cbb5-325d-4124-905b-776b4736aafe/dumby-product-20210622191038567000 s3://nisar-dev/test/dumby-product-20210622191038567000' > /private/tmp/docker_tmp30pvnjef/stdout_stage-out.txt 2> /private/tmp/docker_tmp30pvnjef/stderr_stage-out.txt
+       'if [ ! -d $HOME/.aws ]; then cp -rp .aws $HOME/; fi && aws s3 cp --recursive /var/lib/cwl/stg0598cbb5-325d-4124-905b-776b4736aafe/dumby-product-20210622191038567000 s3://hysds-dataset-bucket-gman-test/test/dumby-product-20210622191038567000' > /private/tmp/docker_tmp30pvnjef/stdout_stage-out.txt 2> /private/tmp/docker_tmp30pvnjef/stderr_stage-out.txt
    INFO [job stage-out] Max memory used: 881MiB
    INFO [job stage-out] completed success
    INFO [step stage-out] completed success
@@ -558,15 +556,13 @@ Building off of the previous run-pge example:
    ```
    export aws_access_key_id="<your AWS access key ID>"
    export aws_secret_access_key="<your AWS secret access key>"
-   export aws_session_token="<your AWS session token>"
    ```
 
    Then write them to a K8s secret: 
    ```
    kubectl --namespace="$NAMESPACE_NAME" create secret generic aws-creds \
      --from-literal=aws_access_key_id="$aws_access_key_id" \
-     --from-literal=aws_secret_access_key="$aws_secret_access_key" \
-     --from-literal=aws_session_token="$aws_session_token"
+     --from-literal=aws_secret_access_key="$aws_secret_access_key"
    ```
 1. Create volumes (this is the equivalent to creating a unique work directory for the workflow execution job):
    ```
