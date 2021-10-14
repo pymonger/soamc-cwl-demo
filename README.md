@@ -298,6 +298,11 @@ Building off of the previous run-pge example:
    ```
 
 ## Run 3-step workflow (stage-in, run-pge & stage-out) example
+Now that we've seen the individual steps at work, we can proceed with running them in 
+a CWL workflow. The following image depicts the graph visualiation (dot) of the 
+DAG workflow.
+
+![baseline-pge-workflow](images/baseline-pge-workflow.png?raw=true "baseline-pge-workflow")
 
 1. Change to `baseline-pge` directory:
    ```
