@@ -6,3 +6,4 @@ dumby-product-*
 stage-out-job.yml
 baseline-pge-workflow-job.yml
 output-data
+.DS_Store
