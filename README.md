@@ -596,7 +596,7 @@ workflows and their composite steps as K8s jobs.
 
    Monitor execution with:
    ```
-   kubectl --namespace="$NAMESPACE_NAME" logs -f job/stage-cwl-files
+   while true; do kubectl --namespace="$NAMESPACE_NAME" logs -f job/stage-cwl-files && break; sleep 2; done
    ```
 1. Run the workflow:
    ```
@@ -605,7 +605,7 @@ workflows and their composite steps as K8s jobs.
 
    Monitor execution with:
    ```
-   kubectl --namespace="$NAMESPACE_NAME" logs -f job/calrissian-job
+   while true; do kubectl --namespace="$NAMESPACE_NAME" logs -f job/calrissian-job && break; sleep 2; done
    ```
 
    Output should be similar to this:
