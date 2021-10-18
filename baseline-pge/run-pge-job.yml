@@ -2,5 +2,5 @@ product_id: dumby-product-20210622191038567000
 input_file:
   class: File
   path: LC80101172015002LGN00_BQA.TIF  
-min_sleep: 30
-max_sleep: 60
+min_sleep: 15
+max_sleep: 30
