@@ -589,15 +589,6 @@ workflows and their composite steps as K8s jobs.
    ```
    kubectl --namespace="$NAMESPACE_NAME" create -f GKE/VolumeClaims.yaml
    ```
-1. Stage CWL workflow files (optional as calrissian will download all CWL files for us):
-   ```
-   kubectl --namespace="$NAMESPACE_NAME" create -f StageCWLFiles.yaml
-   ```
-
-   Monitor execution with:
-   ```
-   while true; do kubectl --namespace="$NAMESPACE_NAME" logs -f job/stage-cwl-files && break; sleep 2; done
-   ```
 1. Run the workflow:
    ```
    kubectl --namespace="$NAMESPACE_NAME" create -f CalrissianJob.yaml
