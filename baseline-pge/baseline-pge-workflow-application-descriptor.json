@@ -11,7 +11,30 @@
                 }
             },
             "abstract": "Application Package Demo",
-            "keywords": ["Demo"]
+            "keywords": ["Demo"],
+            "inputs": [
+                {
+                    "id": "parameters",
+                    "title": "Parameter File",
+                    "input": {
+                        "literalDataDomains": [{
+                            "dataType": {
+                                "name": "File"
+                            }
+                        }]
+                    }
+                }
+            ],
+            "outputs": [{
+                "id": "output",
+                "title": "stdout",
+                "output": {
+                    "formats": [{
+                        "mimeType": "text/*",
+                        "default": true
+                    }]
+                }
+            }]
         },
         "processVersion": "1.0.0",
         "jobControlOptions": [
