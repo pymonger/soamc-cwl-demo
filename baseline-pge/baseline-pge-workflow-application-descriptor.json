@@ -1,0 +1,28 @@
+{
+    "processDescription": {
+        "process": {
+            "id": "baseline-pge-workflow",
+            "title": "Baseline PGE",
+            "owsContext": {
+                "offering": {
+                    "content": {
+                        "href": "https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/baseline-pge-workflow.cwl"
+                    }
+                }
+            },
+            "abstract": "Application Package Demo",
+            "keywords": ["Demo"]
+        },
+        "processVersion": "1.0.0",
+        "jobControlOptions": [
+            "async-execute"
+        ],
+        "outputTransmission": [
+            "reference"
+        ]
+    },
+    "immediateDeployment": true,
+    "executionUnit": [{
+        "href": "s3://soamc-application-package-catalog/baseline-pge.tar.gz"
+    }]
+}
