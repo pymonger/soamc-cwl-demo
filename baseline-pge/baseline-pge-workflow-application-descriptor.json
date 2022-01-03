@@ -1,0 +1,51 @@
+{
+    "processDescription": {
+        "process": {
+            "id": "baseline-pge-workflow",
+            "title": "Baseline PGE",
+            "owsContext": {
+                "offering": {
+                    "content": {
+                        "href": "https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/baseline-pge-workflow.cwl"
+                    }
+                }
+            },
+            "abstract": "Application Package Demo",
+            "keywords": ["Demo"],
+            "inputs": [
+                {
+                    "id": "parameters",
+                    "title": "Parameter File",
+                    "input": {
+                        "literalDataDomains": [{
+                            "dataType": {
+                                "name": "File"
+                            }
+                        }]
+                    }
+                }
+            ],
+            "outputs": [{
+                "id": "output",
+                "title": "stdout",
+                "output": {
+                    "formats": [{
+                        "mimeType": "text/*",
+                        "default": true
+                    }]
+                }
+            }]
+        },
+        "processVersion": "1.0.0",
+        "jobControlOptions": [
+            "async-execute"
+        ],
+        "outputTransmission": [
+            "reference"
+        ]
+    },
+    "immediateDeployment": true,
+    "executionUnit": [{
+        "href": "docker://pymonger/baseline-pge:latest"
+    }]
+}
