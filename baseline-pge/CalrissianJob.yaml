@@ -30,7 +30,7 @@ spec:
           - "/calrissian/output-data/"
           - "--usage-report"
           - "/calrissian/output-data/docker-usage.json"
-          - "https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/1.1.0/baseline-pge/baseline-pge-workflow.cwl"
+          - "https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/1.2.0/baseline-pge/baseline-pge-workflow.cwl"
           - "--workflow_input_url"
           - "https://s3-us-west-2.amazonaws.com/landsat-pds/L8/010/117/LC80101172015002LGN00/LC80101172015002LGN00_BQA.TIF"
           - "--workflow_input_file"

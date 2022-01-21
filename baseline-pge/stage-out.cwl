@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 
-cwlVersion: v1.1
+cwlVersion: v1.2
 class: CommandLineTool
 $namespaces:
   cwltool: http://commonwl.org/cwltool#
@@ -16,7 +16,7 @@ requirements:
     networkAccess: true
   InitialWorkDirRequirement:
     listing:
-      - entryname: .aws/credentials
+      - entryname: /.aws/credentials
         entry: |
           [default]
           output = json
