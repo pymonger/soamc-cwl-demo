@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 
-cwlVersion: v1.0
+cwlVersion: v1.1
 class: CommandLineTool
 $namespaces:
   cwltool: http://commonwl.org/cwltool#
@@ -12,6 +12,8 @@ hints:
   DockerRequirement:
     dockerPull: pymonger/aws-cli
 requirements:
+  NetworkAccess:
+    networkAccess: true
   InitialWorkDirRequirement:
     listing:
       - entryname: .aws/credentials

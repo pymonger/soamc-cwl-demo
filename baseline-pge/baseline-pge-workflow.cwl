@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 
-cwlVersion: v1.0
+cwlVersion: v1.1
 class: Workflow
 $namespaces:
   cwltool: http://commonwl.org/cwltool#
