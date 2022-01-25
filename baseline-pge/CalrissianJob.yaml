@@ -61,9 +61,9 @@ spec:
             fieldRef:
               fieldPath: metadata.name
         - name: CALRISSIAN_DELETE_PODS
-          value: false
+          value: "false"
         - name: RETRY_ATTEMPTS
-          value: 1
+          value: "1"
       restartPolicy: Never
       volumes:
       - name: calrissian-input-data
