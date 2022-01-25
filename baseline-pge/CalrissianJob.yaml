@@ -15,6 +15,7 @@ spec:
               name: aws-creds
         command: ["calrissian"]
         args:
+          - "--preserve-entire-environment"
           - "--debug"
           - "--stdout"
           - "/calrissian/output-data/docker-output.json"
