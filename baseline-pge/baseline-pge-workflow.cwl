@@ -29,12 +29,12 @@ outputs:
   stderr_stage-in:
     type: File
     outputSource: stage-in/stderr_file
-  stdout_run-pge:
-    type: File
-    outputSource: run-pge/stdout_file
-  stderr_run-pge:
-    type: File
-    outputSource: run-pge/stderr_file
+  #stdout_run-pge:
+  #  type: File
+  #  outputSource: run-pge/stdout_file
+  #stderr_run-pge:
+  #  type: File
+  #  outputSource: run-pge/stderr_file
   stdout_stage-out:
     type: File
     outputSource: stage-out/stdout_file
