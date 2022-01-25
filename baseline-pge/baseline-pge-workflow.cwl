@@ -62,8 +62,8 @@ steps:
       max_sleep: workflow_max_sleep
     out:
     - dataset_dir
-    - stdout_file
-    - stderr_file
+    #- stdout_file
+    #- stderr_file
 
   stage-out:
     run: stage-out.cwl

@@ -32,9 +32,9 @@ outputs:
     type: Directory
     outputBinding:
       glob: "dumby-product-*"
-  stdout_file:
-    type: stdout
-  stderr_file:
-    type: stderr
-stdout: stdout_run-pge.txt
-stderr: stderr_run-pge.txt
+  #stdout_file:
+  #  type: stdout
+  #stderr_file:
+  #  type: stderr
+#stdout: stdout_run-pge.txt
+#stderr: stderr_run-pge.txt
