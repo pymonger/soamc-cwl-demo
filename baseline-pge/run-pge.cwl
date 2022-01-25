@@ -5,7 +5,7 @@ class: CommandLineTool
 hints:
   DockerRequirement:
     dockerPull: pymonger/baseline-pge:latest
-baseCommand: [/home/ops/verdi/ops/baseline_pge/dumby_landsat_cwl.sh]
+baseCommand: [/home/ops/verdi/ops/baseline_pge/dumby_landsat_cwl_fail.sh]
 requirements:
   InitialWorkDirRequirement:
     listing:
