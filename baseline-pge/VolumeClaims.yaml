@@ -4,9 +4,8 @@ metadata:
   name: calrissian-input-data
 spec:
   accessModes:
-    - ReadWriteOnce
-    - ReadOnlyMany
-  storageClassName: "standard"
+    - ReadWriteMany
+  storageClassName: "longhorn"
   resources:
     requests:
       storage: 1Gi
@@ -18,7 +17,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  volumeMode: Block
   storageClassName: "longhorn"
   resources:
     requests:
@@ -31,7 +29,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  volumeMode: Block
   storageClassName: "longhorn"
   resources:
     requests:

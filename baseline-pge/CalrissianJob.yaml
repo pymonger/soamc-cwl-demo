@@ -46,15 +46,13 @@ spec:
           - "--workflow_aws_secret_access_key"
           - "$(aws_secret_access_key)"
           - "--workflow_base_dataset_url"
-          - "s3://hysds-dataset-bucket-gman-test/gke"
+          - "s3://hysds-dataset-bucket-gman-test/on-prem-k8s"
         volumeMounts:
         - mountPath: /calrissian/input-data
           name: calrissian-input-data
-          readOnly: true
-        volumeDevices:
-        - devicePath: /calrissian/tmpout
+        - mountPath: /calrissian/tmpout
           name: calrissian-tmpout
-        - devicePath: /calrissian/output-data
+        - mountPath: /calrissian/output-data
           name: calrissian-output-data
         env:
         - name: CALRISSIAN_POD_NAME
