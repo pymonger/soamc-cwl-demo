@@ -13,10 +13,10 @@ spec:
           - -c
           - >-
             cd /calrissian/input-data &&
-            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/baseline-pge-workflow.cwl &&
-            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/stage-in.cwl &&
-            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/run-pge.cwl &&
-            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/stage-out.cwl
+            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/1.1.0/baseline-pge/baseline-pge-workflow.cwl &&
+            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/1.1.0/baseline-pge/stage-in.cwl &&
+            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/1.1.0/baseline-pge/run-pge.cwl &&
+            curl -O https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/1.1.0/baseline-pge/stage-out.cwl
         volumeMounts:
         - mountPath: /calrissian/input-data
           name: calrissian-input-data

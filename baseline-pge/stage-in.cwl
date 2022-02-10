@@ -1,10 +1,13 @@
 #!/usr/bin/env cwl-runner
 
-cwlVersion: v1.0
+cwlVersion: v1.1
 class: CommandLineTool
 hints:
   DockerRequirement:
     dockerPull: curlimages/curl
+requirements:
+  NetworkAccess:
+    networkAccess: true
 baseCommand: [curl]
 inputs:
   input_url:

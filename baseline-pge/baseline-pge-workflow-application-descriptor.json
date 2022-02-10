@@ -6,7 +6,7 @@
             "owsContext": {
                 "offering": {
                     "content": {
-                        "href": "https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/baseline-pge-workflow.cwl"
+                        "href": "https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/1.1.0/baseline-pge/baseline-pge-workflow.cwl"
                     }
                 }
             },
@@ -36,7 +36,7 @@
                 }
             }]
         },
-        "processVersion": "1.0.0",
+        "processVersion": "1.1.0",
         "jobControlOptions": [
             "async-execute"
         ],
