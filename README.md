@@ -589,6 +589,13 @@ workflows and their composite steps as K8s jobs.
    ```
    kubectl --namespace="$NAMESPACE_NAME" create -f GKE/VolumeClaims.yaml
    ```
+
+   If on EKS (Elastic Kubernetes Service), see the EKS caveat below to create
+   PersistentVolumeClaims backed by EFS (Elastic File Service) to support 
+   `ReadWriteMany` and run this afterwards:
+   ```
+   kubectl --namespace="$NAMESPACE_NAME" create -f EKS/VolumeClaims.yaml
+   ```
 1. Run the workflow:
    ```
    kubectl --namespace="$NAMESPACE_NAME" create -f CalrissianJob.yaml
@@ -814,4 +821,16 @@ kubectl create -f GKE/nfs-clusterip-service.yaml
 After this, continue with step 5 above but instead use the `GKE/VolumeClaims.yaml` instead:
 ```
 kubectl --namespace="$NAMESPACE_NAME" create -f GKE/VolumeClaims.yaml
+```
+
+### Elastic Kubernetes Service
+
+The default storage class in EKS doesn't support `ReadWriteMany` which is required by 
+Calrissian. To accomodate this requirement, we can use EFS to provide `ReadWriteMany`
+volumes:
+https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
+
+Continue with step 5 above but instead use the `EKS/VolumeClaims.yaml` instead:
+```
+kubectl --namespace="$NAMESPACE_NAME" create -f EKS/VolumeClaims.yaml
 ```
