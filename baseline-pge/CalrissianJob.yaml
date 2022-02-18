@@ -4,6 +4,7 @@ kind: Job
 metadata:
   name: calrissian-job
 spec:
+  backoffLimit: 0
   template:
     spec:
       containers:
@@ -15,12 +16,11 @@ spec:
               name: aws-creds
         command: ["calrissian"]
         args:
-          - "--preserve-entire-environment"
           - "--debug"
-          - "--stdout"
-          - "/calrissian/output-data/docker-output.json"
-          - "--stderr"
-          - "/calrissian/output-data/docker-stderr.log"
+          #- "--stdout"
+          #- "/calrissian/output-data/docker-output.json"
+          #- "--stderr"
+          #- "/calrissian/output-data/docker-stderr.log"
           - "--max-ram"
           - "16G"
           - "--max-cores"
@@ -32,6 +32,7 @@ spec:
           - "--usage-report"
           - "/calrissian/output-data/docker-usage.json"
           - "https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/fail/baseline-pge/baseline-pge-workflow.cwl"
+          #- "https://raw.githubusercontent.com/pymonger/soamc-cwl-demo/develop/baseline-pge/baseline-pge-workflow.cwl"
           - "--workflow_input_url"
           - "https://s3-us-west-2.amazonaws.com/landsat-pds/L8/010/117/LC80101172015002LGN00/LC80101172015002LGN00_BQA.TIF"
           - "--workflow_input_file"
@@ -47,7 +48,7 @@ spec:
           - "--workflow_aws_secret_access_key"
           - "$(aws_secret_access_key)"
           - "--workflow_base_dataset_url"
-          - "s3://hysds-dataset-bucket-gman-test/test"
+          - "s3://soamc-ades-out/test"
         volumeMounts:
         - mountPath: /calrissian/input-data
           name: calrissian-input-data
@@ -63,8 +64,6 @@ spec:
               fieldPath: metadata.name
         - name: CALRISSIAN_DELETE_PODS
           value: "false"
-        - name: RETRY_ATTEMPTS
-          value: "1"
       restartPolicy: Never
       volumes:
       - name: calrissian-input-data
